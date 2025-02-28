@@ -3,6 +3,7 @@ public class Main {
         Matrix M = new Matrix();
         M.generateRandomMatrix();
         M.calculateNrOfBombs();
+
         for(int i=0;i<M.getNrOfCols();i++){
             for(int j=0;j<M.getNrOfRows();j++){
                 if(M.matrix[i][j].isBomb()){

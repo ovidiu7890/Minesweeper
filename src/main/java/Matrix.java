@@ -3,8 +3,8 @@ public class Matrix {
     private int nrOfRows;
     private int nrOfCols;
     public Matrix(){
-        this.nrOfRows = 9;
-        this.nrOfCols = 9;
+        this.nrOfRows = 10;
+        this.nrOfCols = 10;
         this.matrix = new Square[nrOfRows][nrOfCols];
     }
 
@@ -30,7 +30,7 @@ public class Matrix {
                 this.matrix[i][j]=new Square(false);
             }
         }
-        for(int i=0;i<10;i++){
+        for(int i=0;i<=10;i++){
             int x=(int)(Math.random()*9);
             int y=(int)(Math.random()*9);
             if(!this.matrix[x][y].isBomb()){
