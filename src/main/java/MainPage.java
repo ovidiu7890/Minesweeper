@@ -10,6 +10,7 @@ public class MainPage {
         JFrame frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Minesweeper");
+        frame.setSize(800, 600);
 
         frame.setLayout(new BorderLayout());
         JPanel panel = new JPanel();
@@ -71,11 +72,29 @@ public class MainPage {
                                 }
                             }
                         }
+                        boolean ok=false;
+                        for(int k=0;k<M.getNrOfCols();k++){
+                            for(int t=0;t<M.getNrOfRows();t++){
+                                if(!M.matrix[k][t].isClicked() && !M.matrix[k][t].isBomb()){
+                                    ok=true;
+                                }
+                            }
+                        }
+                        if(!ok){
+                            JOptionPane.showMessageDialog(frame, "Good job! do you want to play again?");
+
+                            frame.dispose(); // Close current window
+                            SwingUtilities.invokeLater(() -> main(new String[]{}));
+                        }
                     }
-                    else{
+                    else {
                         M.matrix[finalI][finalJ].button.setBackground(Color.RED);
-                        JOptionPane.showMessageDialog(frame,M.matrix[finalI][finalJ]);
+                        JOptionPane.showMessageDialog(frame, "Game Over! Restarting...");
+
+                        frame.dispose(); // Close current window
+                        SwingUtilities.invokeLater(() -> main(new String[]{})); // Restart the game
                     }
+
                 });
                 panel.add(M.matrix[i][j].button);
             }
@@ -83,5 +102,4 @@ public class MainPage {
         frame.add(panel, BorderLayout.CENTER);
         frame.setVisible(true);
     }
-
 }
